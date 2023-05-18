@@ -1,9 +1,10 @@
+import { Header } from '../../components/Header';
 import { HomeWrapper } from './styles';
 
 export const Home = () => {
   return (
     <HomeWrapper>
-      <p>Home</p>
+      <Header />
     </HomeWrapper>
   );
 };
