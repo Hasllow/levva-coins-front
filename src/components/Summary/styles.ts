@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const SummaryContainer = styled.section`
   grid-column: 2 / 3;
@@ -14,7 +14,11 @@ export const SummaryContainer = styled.section`
   margin-top: -5rem;
 `;
 
-export const SummaryCard = styled.div`
+interface SummaryCardProps {
+  variant?: 'balance';
+}
+
+export const SummaryCard = styled.div<SummaryCardProps>`
   background: ${props => props.theme['gray-500']};
   border-radius: 6px;
   padding: 2rem;
@@ -31,4 +35,21 @@ export const SummaryCard = styled.div`
     margin-top: 1rem;
     font-size: 2rem;
   }
+
+  ${props =>
+    props.variant === 'balance' &&
+    css`
+      background: linear-gradient(
+        to bottom,
+        ${props => props.theme['gray-500']},
+        ${props => props.theme['gray-700']}
+      );
+      border-right: 2px solid ${props.theme['yellow-500']};
+      header: {
+        color: ${props.theme['yellow-500']};
+      }
+      strong: {
+        color: ${props.theme['yellow-500']};
+      }
+    `}
 `;

@@ -21,7 +21,7 @@ export const Summary = () => {
 
         <strong>R$ 17.000,00</strong>
       </SummaryCard>
-      <SummaryCard>
+      <SummaryCard variant="balance">
         <header>
           <span>Total</span>
           <CurrencyDollar size={32} color={defaultTheme['yellow-500']} />
