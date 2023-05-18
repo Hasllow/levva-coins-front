@@ -1,3 +1,9 @@
+import { AuthLayout } from '../../Layouts/AuthLayout';
+
 export const Login = () => {
-  return <p>Login</p>;
+  return (
+    <AuthLayout>
+      <p>Login</p>;
+    </AuthLayout>
+  );
 };

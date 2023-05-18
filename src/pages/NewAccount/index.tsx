@@ -1,3 +1,9 @@
+import { AuthLayout } from '../../Layouts/AuthLayout';
+
 export const NewAccount = () => {
-  return <p>New Account</p>;
+  return (
+    <AuthLayout>
+      <p>New Account</p>;
+    </AuthLayout>
+  );
 };
