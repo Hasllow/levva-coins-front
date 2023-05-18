@@ -45,6 +45,24 @@ export const NewCategoryButton = styled.button`
   }
 `;
 
-export const NewTransactionButton = styled.button``;
+export const NewTransactionButton = styled.button`
+  height: 50px;
+  border: 0;
+  background: ${props => props.theme['yellow-300']};
+  color: ${props => props.theme['gray-600']};
+  font-weight: bold;
+
+  border-radius: 6px;
+
+  padding: 0 1.25rem;
+  margin-right: 1rem;
+
+  transition: background-color 0.3s;
+
+  &:hover {
+    cursor: pointer;
+    background: ${props => props.theme['gray-500']};
+  }
+`;
 
 export const UserAvatar = styled.img``;
