@@ -1,14 +1,15 @@
 import { AuthLayout } from '../../Layouts/AuthLayout';
+import { Form, FormInput } from '../../styles/global';
 
 export const NewAccount = () => {
   return (
     <AuthLayout title="Cadastro" subtitle="Crie sua conta e começe a gerenciar suas finanças.">
-      <form>
-        <input type="name" name="" id="" placeholder="Nome e sobrenome" />
-        <input type="email" name="" id="" placeholder="E-mail" />
-        <input type="password" name="" id="" placeholder="Senha" />
+      <Form>
+        <FormInput type="name" name="" id="" placeholder="Nome e sobrenome" />
+        <FormInput type="email" name="" id="" placeholder="E-mail" />
+        <FormInput type="password" name="" id="" placeholder="Senha" />
         <button type="submit">Criar conta</button>
-      </form>
+      </Form>
     </AuthLayout>
   );
 };
