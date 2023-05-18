@@ -1,3 +1,9 @@
+import { HomeWrapper } from './styles';
+
 export const Home = () => {
-  return <p>Home</p>;
+  return (
+    <HomeWrapper>
+      <p>Home</p>
+    </HomeWrapper>
+  );
 };
