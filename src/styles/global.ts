@@ -42,3 +42,22 @@ export const FormInput = styled.input`
     margin-top: 1rem;
   }
 `;
+
+export const FormButton = styled.button`
+  background: ${props => props.theme['yellow-300']};
+
+  padding: 1rem 0;
+  margin-top: 1rem;
+
+  border-radius: 6px;
+  border: 1px solid ${props => props.theme['yellow-300']};
+  font-weight: bold;
+
+  transition: background 0.5s ease;
+
+  &:hover {
+    cursor: pointer;
+    background: ${props => props.theme['yellow-500']};
+    border: 1px solid ${props => props.theme['yellow-500']};
+  }
+`;

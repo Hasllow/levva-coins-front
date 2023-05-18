@@ -1,5 +1,5 @@
 import { AuthLayout } from '../../Layouts/AuthLayout';
-import { Form, FormInput } from '../../styles/global';
+import { Form, FormButton, FormInput } from '../../styles/global';
 
 export const NewAccount = () => {
   return (
@@ -8,7 +8,7 @@ export const NewAccount = () => {
         <FormInput type="name" name="" id="" placeholder="Nome e sobrenome" />
         <FormInput type="email" name="" id="" placeholder="E-mail" />
         <FormInput type="password" name="" id="" placeholder="Senha" />
-        <button type="submit">Criar conta</button>
+        <FormButton type="submit">Criar conta</FormButton>
       </Form>
     </AuthLayout>
   );
