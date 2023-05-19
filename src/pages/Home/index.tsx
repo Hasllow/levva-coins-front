@@ -13,6 +13,12 @@ export const Home = () => {
 
       <TransactionsContainer>
         <TransactionTable>
+          <thead>
+            <td>Descrição</td>
+            <td>Preço</td>
+            <td>Categoria</td>
+            <td>Data</td>
+          </thead>
           <tbody>
             <tr>
               <td width="50%">Desenvolvimento de site</td>

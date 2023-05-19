@@ -6,10 +6,13 @@ export const HomeWrapper = styled.div`
 `;
 
 export const TransactionsContainer = styled.main`
-  grid-column: 3/2;
+  grid-column: 2/3;
+
   width: 100%;
   max-width: 1120px;
   margin-top: 1rem;
+  margin: 1rem auto 0;
+  padding: 0 1.5rem;
 `;
 
 export const TransactionTable = styled.table`
@@ -18,9 +21,6 @@ export const TransactionTable = styled.table`
   border-spacing: 0 0.5rem;
 
   td {
-    padding: 1.25rem 2rem;
-    background: ${props => props.theme['gray-500']};
-
     &:first-child {
       border-top-left-radius: 6px;
       border-bottom-left-radius: 6px;
@@ -28,6 +28,19 @@ export const TransactionTable = styled.table`
     &:last-child {
       border-top-right-radius: 6px;
       border-bottom-right-radius: 6px;
+    }
+  }
+
+  thead {
+    td {
+      padding: 1rem 2rem;
+    }
+  }
+
+  tbody {
+    td {
+      padding: 1.25rem 2rem;
+      background: ${props => props.theme['gray-500']};
     }
   }
 `;
