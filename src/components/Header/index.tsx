@@ -41,11 +41,11 @@ export const Header = () => {
               <FormInput type="number" placeholder="Preço" required />
               <FormInput type="text" placeholder="Categoria" required />
               <TransactionTypeContainer>
-                <TransactionTypeButton variant="income">
+                <TransactionTypeButton type="button" variant="income">
                   <ArrowCircleUp size={24} />
                   Entrada
                 </TransactionTypeButton>
-                <TransactionTypeButton variant="income">
+                <TransactionTypeButton type="button" variant="outcome">
                   <ArrowCircleDown size={24} />
                   Saída
                 </TransactionTypeButton>

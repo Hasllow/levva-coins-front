@@ -66,8 +66,33 @@ export const FormButton = styled.button`
 `;
 
 interface TransactionTypeButtonProps {
-  variant?: 'income' | 'outcome';
+  variant: 'income' | 'outcome';
 }
 
-export const TransactionTypeContainer = styled.div``;
-export const TransactionTypeButton = styled.button<TransactionTypeButtonProps>``;
+export const TransactionTypeContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+`;
+
+export const TransactionTypeButton = styled.button<TransactionTypeButtonProps>`
+  cursor: pointer;
+  background: ${props => props.theme['gray-700']};
+  color: ${props => props.theme['gray-300']};
+  padding: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.5rem;
+  border-radius: 6px;
+  border: 0;
+
+  svg {
+    color: ${props =>
+      props.variant === 'income' ? props.theme['green-500'] : props.theme['red-500']};
+  }
+`;
