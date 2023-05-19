@@ -33,7 +33,10 @@ export const Header = () => {
 
         <div>
           <Modal title="Nova categoria" trigger={newCategoryButton}>
-            <p>categoria</p>
+            <Form>
+              <FormInput type="text" value="Descrição" />
+              <FormButton type="submit">Cadastrar</FormButton>
+            </Form>
           </Modal>
           <Modal title="Nova transação" trigger={newTransactionButton}>
             <Form>
