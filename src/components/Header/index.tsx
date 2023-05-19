@@ -10,7 +10,14 @@ import {
 
 import levvaCoinsLogo from '../../assets/logo.svg';
 import { Modal } from '../Modal';
-import { Form, FormButton, FormInput } from '../../styles/global';
+import {
+  Form,
+  FormButton,
+  FormInput,
+  TransactionTypeButton,
+  TransactionTypeContainer,
+} from '../../styles/global';
+import { ArrowCircleDown, ArrowCircleUp } from 'phosphor-react';
 
 export const Header = () => {
   const newCategoryButton: ReactNode = <NewCategoryButton>Nova Categoria</NewCategoryButton>;
@@ -29,7 +36,23 @@ export const Header = () => {
             <p>categoria</p>
           </Modal>
           <Modal title="Nova transação" trigger={newTransactionButton}>
-            <p>transacao</p>
+            <Form>
+              <FormInput type="text" placeholder="Descrição" required />
+              <FormInput type="number" placeholder="Preço" required />
+              <FormInput type="text" placeholder="Categoria" required />
+              <TransactionTypeContainer>
+                <TransactionTypeButton variant="income">
+                  <ArrowCircleUp size={24} />
+                  Entrada
+                </TransactionTypeButton>
+                <TransactionTypeButton variant="income">
+                  <ArrowCircleDown size={24} />
+                  Saída
+                </TransactionTypeButton>
+              </TransactionTypeContainer>
+
+              <FormButton type="submit">Cadastrar</FormButton>
+            </Form>
           </Modal>
         </div>
         <Modal title="Meu perfil" trigger={userAvatar}>
