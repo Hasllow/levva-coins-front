@@ -4,6 +4,9 @@ import * as yup from 'yup';
 
 import { AuthLayout } from '../../Layouts/AuthLayout';
 import { Form, FormButton, FormError, FormInput } from '../../styles/global';
+import loginUseCase from '../../useCases/LoginUseCase/LoginUseCase';
+import { useStore } from 'effector-react';
+import LoginStore from '../../stores/LoginStore/LoginStore';
 
 interface FormProps {
   email: string;
@@ -18,6 +21,8 @@ const formSchema = yup
   .required();
 
 export const Login = () => {
+  const { isLoading, hasError, errorMessage } = useStore(LoginStore);
+
   const {
     register,
     handleSubmit,
@@ -25,7 +30,7 @@ export const Login = () => {
   } = useForm<FormProps>({ resolver: yupResolver(formSchema) });
 
   const handleLogin = ({ email, password }: FormProps) => {
-    console.log({ email, password });
+    loginUseCase.execute({ email, password });
   };
 
   return (
@@ -35,7 +40,10 @@ export const Login = () => {
         {errors.email && <FormError>{errors.email.message}</FormError>}
         <FormInput {...register('password')} type="password" placeholder="Senha" />
         {errors.password && <FormError>{errors.password.message}</FormError>}
-        <FormButton type="submit">Entrar</FormButton>
+
+        {hasError && <FormError>{errorMessage}</FormError>}
+
+        <FormButton type="submit">{isLoading ? 'Carregando...' : 'Entrar'}</FormButton>
       </Form>
     </AuthLayout>
   );
