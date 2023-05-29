@@ -1,0 +1,610 @@
+{
+  "uuid": "a5b7c7b6-e7a3-46c0-a914-0a6df4114dfc",
+  "lastMigration": 27,
+  "name": "Mockoon environment",
+  "endpointPrefix": "api",
+  "latency": 750,
+  "port": 3333,
+  "hostname": "",
+  "folders": [
+    {
+      "uuid": "f66a8ad9-4a51-47a6-be83-6164351631ac",
+      "name": "User",
+      "collapsed": false,
+      "children": [
+        {
+          "type": "route",
+          "uuid": "d5fee3bd-dbd0-4d1b-a6e0-fe83e8a7d0e1"
+        },
+        {
+          "type": "route",
+          "uuid": "ca9f66cd-c864-4427-a740-55df0bf669e2"
+        },
+        {
+          "type": "route",
+          "uuid": "fb434e34-c655-4cb9-a947-ea33d454a492"
+        }
+      ]
+    },
+    {
+      "uuid": "d9750c3d-bf67-4e5c-a813-fa90e9af9594",
+      "name": "Categories",
+      "collapsed": false,
+      "children": [
+        {
+          "type": "route",
+          "uuid": "21ee72df-ebb9-4282-bc8d-b938e684354e"
+        },
+        {
+          "type": "route",
+          "uuid": "018251b0-31d5-4b0b-80bf-781d2d22d944"
+        }
+      ]
+    },
+    {
+      "uuid": "e62d55e5-60ab-4a09-9e18-a222f965f735",
+      "name": "Transactions",
+      "collapsed": false,
+      "children": [
+        {
+          "type": "route",
+          "uuid": "acc63926-bd43-4ab6-9fc4-65d24e3927f2"
+        },
+        {
+          "type": "route",
+          "uuid": "9acf2e72-32db-4c3f-b351-a9de522661e1"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "uuid": "d5fee3bd-dbd0-4d1b-a6e0-fe83e8a7d0e1",
+      "type": "http",
+      "documentation": "Create one user",
+      "method": "post",
+      "endpoint": "user",
+      "responses": [
+        {
+          "uuid": "b2d7cd91-3b1c-462b-95e9-a957e52159e5",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "User created",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "ccaea8a7-32bd-44db-9db8-f2380295af9c",
+          "body": "{\n  \"hasError\": true,\n  \"message\": \"Esse e-mail já existe.\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Email exists",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "email",
+              "value": "lucas.alves@levva.io",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "ca9f66cd-c864-4427-a740-55df0bf669e2",
+      "type": "http",
+      "documentation": "Authenticate one user",
+      "method": "post",
+      "endpoint": "auth",
+      "responses": [
+        {
+          "uuid": "bd103f1f-2fcc-4fa3-a8aa-91b455bc0796",
+          "body": "{\r\n  \"id\": \"9a6d4da7-e870-42dd-b658-14a7849b2c08\",\r\n  \"name\": \"Jhon Doe\",\r\n  \"email\": \"email@email.com\",\r\n  \"token\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\"\r\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "User authenticated",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "84ef2c2b-950a-4ae6-8df6-990d7abfbb97",
+          "body": "{\r\n  \"hasError\": true,\r\n  \"message\": \"Usuário ou senha inválidos.\"\r\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Invalid user",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "email",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "password",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "body",
+              "modifier": "email",
+              "value": "jhon.doe@levva.io",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "fb434e34-c655-4cb9-a947-ea33d454a492",
+      "type": "http",
+      "documentation": "Update one user",
+      "method": "put",
+      "endpoint": "user/:userId",
+      "responses": [
+        {
+          "uuid": "8666b941-21fd-4e2f-ac0e-af91652cc6ba",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 204,
+          "label": "User updated",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "e0a45d0b-8da6-48a1-9a53-0d9dcdc844b8",
+          "body": "{\r\n  \"hasError\": true,\r\n  \"message\": \"Esse usuário não existe.\"\r\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Invalid params",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "userId",
+              "value": "9a6d4da7-e870-42dd-b658-14a7849b2c08",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "dbdf1808-e5b4-475d-bc49-12b63c8265d5",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "User unauthorized",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "authorizathion",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "header",
+              "modifier": "authorizathion",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "21ee72df-ebb9-4282-bc8d-b938e684354e",
+      "type": "http",
+      "documentation": "Create category",
+      "method": "post",
+      "endpoint": "category",
+      "responses": [
+        {
+          "uuid": "aa504b4a-5eb0-4a6d-9ea8-51fc79589b5e",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Category created",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3aaa1591-4fea-4762-8684-75da6de72c75",
+          "body": "{\r\n  \"hasError\": true,\r\n  \"message\": \"Uma categoria com esse nome já existe.\"\r\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Invalid category name",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "description",
+              "value": "Food",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "c777adb7-2043-4e85-b21a-651333f90791",
+          "body": "{\r\n  \"hasError\": true,\r\n  \"message\": \"Usuário não autenticado.\"\r\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "User unauthorized",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "authorization",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "header",
+              "modifier": "authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "018251b0-31d5-4b0b-80bf-781d2d22d944",
+      "type": "http",
+      "documentation": "List all categories",
+      "method": "get",
+      "endpoint": "category",
+      "responses": [
+        {
+          "uuid": "4800d049-7202-45f8-bf47-341543a78bcb",
+          "body": "[{{#repeat 5 10}}\n{\n  \"id\": \"{{guid}}\",\n  \"description\": \"{{faker 'commerce.department'}}\"\n}\n{{/repeat}}]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "List all categories",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1ee331ea-192e-4ea0-bf38-afe5b6f15dca",
+          "body": "{\r\n  \"hasError\": true,\r\n  \"message\": \"Usuário não autenticado.\"\r\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "User unauthorized",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "authorization",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "header",
+              "modifier": "authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "acc63926-bd43-4ab6-9fc4-65d24e3927f2",
+      "type": "http",
+      "documentation": "Create transaction",
+      "method": "post",
+      "endpoint": "transaction",
+      "responses": [
+        {
+          "uuid": "6164a295-663f-4ec3-80c2-813d0d678624",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "Transaction created",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "999a2c37-915b-402c-bd7a-c7056b42ad2a",
+          "body": "{\r\n  \"hasError\": true,\r\n  \"message\": \"Essa transação está com os parametros inválidos. São aceitos valores positivo e tipo entrada/saída.\"\r\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Invalid params",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "type",
+              "value": "0",
+              "invert": true,
+              "operator": "equals"
+            },
+            {
+              "target": "body",
+              "modifier": "type",
+              "value": "1",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "AND",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "233110a7-a6a2-4378-892a-08b074904e7e",
+          "body": "{\r\n  \"hasError\": true,\r\n  \"message\": \"Usuário não autenticado.\"\r\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "User unauthorized",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "authorization",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "header",
+              "modifier": "authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "9acf2e72-32db-4c3f-b351-a9de522661e1",
+      "type": "http",
+      "documentation": "List all transactions",
+      "method": "get",
+      "endpoint": "transaction",
+      "responses": [
+        {
+          "uuid": "89430a50-e1db-498d-bb95-f7127677d8c8",
+          "body": "[{{#repeat 5 10}}\n{\n  \"description\": \"{{faker 'commerce.productName'}}\",\n  \"amount\": {{toFixed (float 10 100) 2}},\n  \"type\": \"{{oneOf (array 'deposit' 'credit')}}\",\n  \"categoryId\": {\n    \"id\" : \"{{guid}}\",\n    \"description\": \"{{faker 'commerce.department'}}\"\n    \n  }\n}\n{{/repeat}}]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "List all transactions",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "4ef0661e-b3b3-4342-a053-7cc303fd6d24",
+          "body": "{\r\n  \"hasError\": true,\r\n  \"message\": \"Usuário não autenticado.\"\r\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "User unauthorized",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "authorization",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "header",
+              "modifier": "authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "folder",
+      "uuid": "f66a8ad9-4a51-47a6-be83-6164351631ac"
+    },
+    {
+      "type": "folder",
+      "uuid": "d9750c3d-bf67-4e5c-a813-fa90e9af9594"
+    },
+    {
+      "type": "folder",
+      "uuid": "e62d55e5-60ab-4a09-9e18-a222f965f735"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}
