@@ -1,6 +1,6 @@
 import { createStore } from 'effector';
 
-import { loadLogin, loadLoginDone, loadLoginFail } from './LoginEvent';
+import { loadLogin, loadLoginDone, loadLoginFail } from './LoginEvents';
 import { LoginState } from './LoginState';
 
 const initialState: LoginState = {

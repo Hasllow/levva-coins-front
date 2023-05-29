@@ -2,14 +2,10 @@ import { router } from '../../Router';
 import { LoginParams, LoginValues } from '../../domain/Login';
 import { RequestError } from '../../domain/Request';
 import { LoginService } from '../../services/LoginService/LoginService';
-import { loadLogin, loadLoginDone, loadLoginFail } from '../../stores/LoginStore/LoginEvent';
+import { loadLogin, loadLoginDone, loadLoginFail } from '../../stores/LoginStore/LoginEvents';
 
 const execute = async ({ email, password }: LoginParams): Promise<void> => {
   loadLogin();
-
-  const errorCallback = ({ hasError, message }: RequestError) => {
-    loadLoginFail({ hasError, message });
-  };
 
   return LoginService.authenticateUser({ email, password })
     .then((user: LoginValues) => {
@@ -19,7 +15,9 @@ const execute = async ({ email, password }: LoginParams): Promise<void> => {
 
       router.navigate('/home');
     })
-    .catch(errorCallback);
+    .catch(({ hasError, message }: RequestError) => {
+      loadLoginFail({ hasError, message });
+    });
 };
 
 const loginUseCase = {

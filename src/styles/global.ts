@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import * as RadioGroup from '@radix-ui/react-radio-group';
+import { Link } from 'react-router-dom';
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -69,6 +70,12 @@ export const FormButton = styled.button`
     background: ${props => props.theme['yellow-500']};
     border: 1px solid ${props => props.theme['yellow-500']};
   }
+`;
+
+export const FormLink = styled(Link)`
+  align-self: flex-end;
+  margin-top: 1rem;
+  color: ${props => props.theme['yellow-500']};
 `;
 
 interface TransactionTypeButtonProps {
