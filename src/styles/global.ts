@@ -78,6 +78,19 @@ export const FormLink = styled(Link)`
   color: ${props => props.theme['yellow-500']};
 `;
 
+export const FormSelect = styled.select`
+  font: 400 1rem 'Roboto', sans-serif;
+  background: ${props => props.theme.black};
+  color: ${props => props.theme.white};
+  border: 0;
+
+  padding: 1rem;
+  border-radius: 6px;
+  width: 100%;
+
+  margin: 1rem auto;
+`;
+
 interface TransactionTypeButtonProps {
   variant: 'income' | 'outcome';
 }

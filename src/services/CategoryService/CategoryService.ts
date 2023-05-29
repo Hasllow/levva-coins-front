@@ -13,6 +13,15 @@ const createCategory = async ({ description }: NewCategoryParams): Promise<Categ
     });
 };
 
+const getCategories = async (): Promise<CategoryValues[]> => {
+  return Api.get({ url: '/category' })
+    .then(response => response.data)
+    .catch((err: AxiosError<RequestError>) => {
+      throw err.response?.data;
+    });
+};
+
 export const CategoryService = {
   createCategory,
+  getCategories,
 };

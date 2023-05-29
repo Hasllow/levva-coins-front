@@ -1,31 +1,16 @@
 import { ReactNode } from 'react';
 
-import {
-  HeaderContainer,
-  HeaderContent,
-  NewCategoryButton,
-  NewTransactionButton,
-  SignOutButton,
-  UserAvatar,
-} from './styles';
+import { HeaderContainer, HeaderContent, SignOutButton, UserAvatar } from './styles';
 
 import levvaCoinsLogo from '../../assets/logo.svg';
 import { Modal } from '../Modal';
-import {
-  Form,
-  FormButton,
-  FormInput,
-  TransactionTypeButton,
-  TransactionTypeContainer,
-} from '../../styles/global';
-import { ArrowCircleDown, ArrowCircleUp } from 'phosphor-react';
+import { Form, FormButton, FormInput } from '../../styles/global';
+
 import { router } from '../../Router';
 import { CategoryModal } from './CategoryModal';
+import { TransactionModal } from './TransactionModal';
 
 export const Header = () => {
-  const newTransactionButton: ReactNode = (
-    <NewTransactionButton>Nova Transação</NewTransactionButton>
-  );
   const userAvatar: ReactNode = <UserAvatar src="https://github.com/jemluz.png" alt="Jemima Luz" />;
 
   const handleSignOut = () => {
@@ -41,25 +26,7 @@ export const Header = () => {
         <div>
           <CategoryModal />
 
-          <Modal title="Nova transação" trigger={newTransactionButton}>
-            <Form>
-              <FormInput type="text" placeholder="Descrição" required />
-              <FormInput type="number" placeholder="Preço" required />
-              <FormInput type="text" placeholder="Categoria" required />
-              <TransactionTypeContainer>
-                <TransactionTypeButton type="button" variant="income" value="income">
-                  <ArrowCircleUp size={24} />
-                  Entrada
-                </TransactionTypeButton>
-                <TransactionTypeButton type="button" variant="outcome" value="outcome">
-                  <ArrowCircleDown size={24} />
-                  Saída
-                </TransactionTypeButton>
-              </TransactionTypeContainer>
-
-              <FormButton type="submit">Cadastrar</FormButton>
-            </Form>
-          </Modal>
+          <TransactionModal />
         </div>
         <Modal title="Meu perfil" trigger={userAvatar}>
           <Form>
