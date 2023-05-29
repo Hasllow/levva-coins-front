@@ -120,7 +120,7 @@
       "responses": [
         {
           "uuid": "bd103f1f-2fcc-4fa3-a8aa-91b455bc0796",
-          "body": "{\r\n  \"id\": \"9a6d4da7-e870-42dd-b658-14a7849b2c08\",\r\n  \"name\": \"Jhon Doe\",\r\n  \"email\": \"email@email.com\",\r\n  \"token\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c\"\r\n}",
+          "body": "{\r\n  \"id\": \"9a6d4da7-e870-42dd-b658-14a7849b2c08\",\r\n  \"name\": \"Jhon Doe\",\r\n  \"email\": \"email@email.com\",\r\n  \"token\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWQiOiJhMGQxNTA3OC01N2M5LTQ5OGUtODNiNy1kOWIwZjBjYTZhOTIiLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6ImpvaG4uZG9lQGxldnZhLmlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.8VQJd-Q6B2eMUCxiVIwLHDeyD_8ymWqIeslJe0_e1FM\"\r\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "User authenticated",
