@@ -1,3 +1,4 @@
+import { router } from '../../Router';
 import { LoginParams, LoginValues } from '../../domain/Login';
 import { RequestError } from '../../domain/Request';
 import { LoginService } from '../../services/LoginService/LoginService';
@@ -15,6 +16,8 @@ const execute = async ({ email, password }: LoginParams): Promise<void> => {
       window.localStorage.setItem('user', JSON.stringify(user));
 
       loadLoginDone();
+
+      router.navigate('/home');
     })
     .catch(errorCallback);
 };
