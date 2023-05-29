@@ -20,9 +20,9 @@ import {
 } from '../../styles/global';
 import { ArrowCircleDown, ArrowCircleUp } from 'phosphor-react';
 import { router } from '../../Router';
+import { CategoryModal } from './CategoryModal';
 
 export const Header = () => {
-  const newCategoryButton: ReactNode = <NewCategoryButton>Nova Categoria</NewCategoryButton>;
   const newTransactionButton: ReactNode = (
     <NewTransactionButton>Nova Transação</NewTransactionButton>
   );
@@ -39,12 +39,8 @@ export const Header = () => {
         <img src={levvaCoinsLogo} alt="levva Coins" />
 
         <div>
-          <Modal title="Nova categoria" trigger={newCategoryButton}>
-            <Form>
-              <FormInput type="text" value="Descrição" />
-              <FormButton type="submit">Cadastrar</FormButton>
-            </Form>
-          </Modal>
+          <CategoryModal />
+
           <Modal title="Nova transação" trigger={newTransactionButton}>
             <Form>
               <FormInput type="text" placeholder="Descrição" required />
