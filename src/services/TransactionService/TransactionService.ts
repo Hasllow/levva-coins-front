@@ -26,7 +26,7 @@ async function createTransaction({
     });
 }
 
-const getTransaction = async (): Promise<TransactionValues[]> => {
+const getTransactions = async (): Promise<TransactionValues[]> => {
   return Api.get({ url: '/transaction' })
     .then(response => response.data)
     .catch((err: AxiosError<RequestError>) => {
@@ -36,7 +36,7 @@ const getTransaction = async (): Promise<TransactionValues[]> => {
 
 const TransactionService = {
   createTransaction,
-  getTransaction,
+  getTransactions,
 };
 
 export default TransactionService;
