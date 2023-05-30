@@ -37,10 +37,6 @@ export const SummaryCard = styled.div<SummaryCardProps>`
     display: block;
     margin-top: 1rem;
     font-size: 2rem;
-
-    @media only screen and (max-with: 1440px) {
-    font-size: 1.7rem;
-  }
   }
 
   ${props =>
@@ -48,14 +44,14 @@ export const SummaryCard = styled.div<SummaryCardProps>`
     css`
       background: linear-gradient(
         to bottom,
-        ${props => props.theme['gray-500']},
-        ${props => props.theme['gray-700']}
+        ${props.theme['gray-500']},
+        ${props.theme['gray-700']}
       );
       border-right: 2px solid ${props.theme['yellow-500']};
-      header: {
+      strong {
         color: ${props.theme['yellow-500']};
       }
-      strong: {
+      header {
         color: ${props.theme['yellow-500']};
       }
     `}

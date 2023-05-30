@@ -15,7 +15,6 @@ import {
   TransactionsContainer,
   TransactionsTableEmpty,
 } from './styles';
-import styled from 'styled-components';
 
 export const Home = () => {
   const { isLoading, transactions } = useStore(TransactionStore);
@@ -50,7 +49,7 @@ export const Home = () => {
                 <tr>
                   <td width="50%">{transaction.description}</td>
                   <td>
-                    <PriceHighlight variant={transaction.type === '0' ? 'income' : 'outcome'}>
+                    <PriceHighlight variant={transaction.type === 0 ? 'income' : 'outcome'}>
                       {money.format(transaction.amount)}
                     </PriceHighlight>
                   </td>
