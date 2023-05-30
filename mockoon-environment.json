@@ -241,14 +241,14 @@
           "rules": [
             {
               "target": "header",
-              "modifier": "authorizathion",
+              "modifier": "authorization",
               "value": "",
               "invert": false,
               "operator": "null"
             },
             {
               "target": "header",
-              "modifier": "authorizathion",
+              "modifier": "authorization",
               "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWQiOiJhMGQxNTA3OC01N2M5LTQ5OGUtODNiNy1kOWIwZjBjYTZhOTIiLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6ImpvaG4uZG9lQGxldnZhLmlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.hgGQuZ2pb9NGH6egr1WOV0RDm49Ug5HF9mGu9EFTRss",
               "invert": true,
               "operator": "equals"
@@ -509,7 +509,7 @@
       "responses": [
         {
           "uuid": "89430a50-e1db-498d-bb95-f7127677d8c8",
-          "body": "[{{#repeat 5 10}}\n{\n  \"description\": \"{{faker 'commerce.productName'}}\",\n  \"amount\": {{toFixed (float 10 100) 2}},\n  \"type\": {{oneOf (array 0 1)}},\n  \"category\": {\n    \"id\" : \"{{guid}}\",\n    \"description\": \"{{faker 'commerce.department'}}\"\n  },\n  \"createdAt\": \"{{now dd/MM/YYYY}}\"\n}\n{{/repeat}}]",
+          "body": "[{{#repeat 5 10}}\n{\n  \"description\": \"{{faker 'commerce.productName'}}\",\n  \"amount\": {{toFixed (float 10 100) 2}},\n  \"type\": {{oneOf (array 0 1)}},\n  \"category\": {\n    \"id\" : \"{{guid}}\",\n    \"description\": \"{{faker 'commerce.department'}}\"\n  },\n  \"createdAt\": \"{{now 'dd/MM/YYY'}}\"\n}\n{{/repeat}}]",
           "latency": 0,
           "statusCode": 200,
           "label": "List all transactions",

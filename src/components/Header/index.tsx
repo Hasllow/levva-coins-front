@@ -1,23 +1,12 @@
-import { ReactNode } from 'react';
-
-import { HeaderContainer, HeaderContent, SignOutButton, UserAvatar } from './styles';
+import { HeaderContainer, HeaderContent } from './styles';
 
 import levvaCoinsLogo from '../../assets/logo.svg';
-import { Modal } from '../Modal';
-import { Form, FormButton, FormInput } from '../../styles/global';
 
-import { router } from '../../Router';
 import { CategoryModal } from './CategoryModal';
 import { TransactionModal } from './TransactionModal';
+import { MyProfileModal } from './MyProfileModal';
 
 export const Header = () => {
-  const userAvatar: ReactNode = <UserAvatar src="https://github.com/jemluz.png" alt="Jemima Luz" />;
-
-  const handleSignOut = () => {
-    window.localStorage.removeItem('user');
-    router.navigate('/login');
-  };
-
   return (
     <HeaderContainer>
       <HeaderContent>
@@ -28,18 +17,8 @@ export const Header = () => {
 
           <TransactionModal />
         </div>
-        <Modal title="Meu perfil" trigger={userAvatar}>
-          <Form>
-            <UserAvatar src="https:\\github.com/jemluz.png" alt="Jemima Luz" variant="large" />
-            <FormInput type="text" value="Jemima Luz" />
-            <FormInput type="email" placeholder="jemima.luz@levva.io" disabled />
-            <FormButton type="submit">Atualizar</FormButton>
 
-            <SignOutButton type="button" onClick={handleSignOut}>
-              Sair
-            </SignOutButton>
-          </Form>
-        </Modal>
+        <MyProfileModal />
       </HeaderContent>
     </HeaderContainer>
   );

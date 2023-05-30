@@ -76,6 +76,7 @@ interface UserAvatarProps {
 }
 
 export const UserAvatar = styled.img<UserAvatarProps>`
+  align-self: center;
   width: 3.1rem;
   height: 100%;
 

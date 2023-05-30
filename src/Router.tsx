@@ -17,7 +17,7 @@ export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route element={isAuthenticated ? <Navigate to="/home" /> : <Outlet />}>
-        <Route index path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/new-account" element={<NewAccount />} />
       </Route>
       <Route element={<ProtectedRoutes />}>
