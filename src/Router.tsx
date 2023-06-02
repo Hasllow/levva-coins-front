@@ -1,22 +1,14 @@
-import {
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-  Navigate,
-  Outlet,
-} from 'react-router-dom';
+import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import { Login } from './pages/Login';
 import { NewAccount } from './pages/NewAccount';
 import { Home } from './pages/Home';
 import { ProtectedRoutes } from './ProtectedRoutes';
-import { validateToken } from './helpers/validateToken';
-
-const isAuthenticated = validateToken();
+import { UnProtectedRoutes } from './UnProtectedRoutes';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route element={isAuthenticated ? <Navigate to="/home" /> : <Outlet />}>
+      <Route element={<UnProtectedRoutes />}>
         <Route path="/login" element={<Login />} />
         <Route path="/new-account" element={<NewAccount />} />
       </Route>

@@ -1,8 +1,8 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { validateToken } from './helpers/validateToken';
 
-export const ProtectedRoutes = () => {
+export const UnProtectedRoutes = () => {
   const isAuthenticated = validateToken();
 
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
+  return isAuthenticated ? <Navigate to="/home" replace /> : <Outlet />;
 };
