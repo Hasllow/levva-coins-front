@@ -24,6 +24,8 @@ export const Home = () => {
     currency: 'BRL',
   });
 
+  const date = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short' });
+
   useEffect(() => {
     GetTransactionsUseCase.execute();
   }, []);
@@ -54,7 +56,7 @@ export const Home = () => {
                     </PriceHighlight>
                   </td>
                   <td>{transaction.category.description}</td>
-                  <td>{transaction.createdAt}</td>
+                  <td>{date.format(transaction.createdAt)}</td>
                 </tr>
               ))}
           </tbody>

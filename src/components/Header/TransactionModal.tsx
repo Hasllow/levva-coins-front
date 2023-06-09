@@ -78,7 +78,11 @@ export const TransactionModal = () => {
     <Modal
       title="Nova transação"
       closeModalRef={closeModalRef}
-      trigger={<NewTransactionButton>Nova Transação</NewTransactionButton>}
+      trigger={
+        <NewTransactionButton onClick={() => GetCategoriesUseCase.execute()}>
+          Nova Transação
+        </NewTransactionButton>
+      }
     >
       <Form onSubmit={handleSubmit(handleCreateTransaction)}>
         <FormInput {...register('description')} placeholder="Descrição" />

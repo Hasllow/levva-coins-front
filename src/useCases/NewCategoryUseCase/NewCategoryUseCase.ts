@@ -3,7 +3,6 @@ import { CategoryService } from '../../services/CategoryService/CategoryService'
 import {
   loadCategory,
   loadCreateCategoryDone,
-  loadCategoryDone,
   loadCategoryFail,
 } from '../../stores/CategoryStore/CategoryEvents';
 
@@ -14,8 +13,8 @@ const execute = async ({ description }: NewCategoryParams): Promise<void> => {
   loadCategory();
 
   return CategoryService.createCategory({ description })
-    .then(() => {
-      loadCreateCategoryDone();
+    .then(category => {
+      loadCreateCategoryDone(category);
     })
     .catch(({ hasError, message }: RequestError) => {
       loadCategoryFail({ hasError, message });
