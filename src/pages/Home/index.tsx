@@ -40,15 +40,17 @@ export const Home = () => {
       <TransactionsContainer>
         <TransactionTable>
           <thead>
-            <td>Descrição</td>
-            <td>Preço</td>
-            <td>Categoria</td>
-            <td>Data</td>
+            <tr>
+              <td>Descrição</td>
+              <td>Preço</td>
+              <td>Categoria</td>
+              <td>Data</td>
+            </tr>
           </thead>
           <tbody>
             {transactions.length > 0 &&
               transactions.map(transaction => (
-                <tr>
+                <tr key={transaction.id}>
                   <td width="50%">{transaction.description}</td>
                   <td>
                     <PriceHighlight variant={transaction.type === 0 ? 'income' : 'outcome'}>
