@@ -17,7 +17,7 @@ import {
 
 import { DeleteModal } from './DeleteModal';
 
-export const Home = () => {
+export function Home() {
   const { isLoading, transactions } = useStore(TransactionStore);
 
   const money = new Intl.NumberFormat('pt-BR', {
@@ -76,4 +76,4 @@ export const Home = () => {
       </TransactionsContainer>
     </HomeWrapper>
   );
-};
+}
