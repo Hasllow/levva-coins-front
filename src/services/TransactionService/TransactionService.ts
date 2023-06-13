@@ -42,10 +42,19 @@ const deleteTransaction = async (id: string): Promise<string> => {
     });
 };
 
+const searchTransaction = async (searchParam: string): Promise<TransactionValues[]> => {
+  return Api.get({ url: `/transaction/search/${searchParam}` })
+    .then(response => response.data)
+    .catch((err: AxiosError<RequestError>) => {
+      throw err.response?.data;
+    });
+};
+
 const TransactionService = {
   createTransaction,
   getTransactions,
   deleteTransaction,
+  searchTransaction,
 };
 
 export default TransactionService;
