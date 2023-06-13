@@ -136,3 +136,53 @@ export const TransactionTypeButton = styled(RadioGroup.Item)<TransactionTypeButt
     }
   }
 `;
+
+export const DeleteTransactionButton = styled.button`
+  cursor: pointer;
+  background: none;
+
+  padding: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 6px;
+  border: none;
+  outline: none;
+
+  transition: all 0.3s;
+
+  svg {
+    color: ${props => props.theme['white']};
+  }
+
+  &:hover {
+    background: ${props => props.theme['red-600']};
+  }
+
+  :focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px ${props => props.theme['red-600']};
+  }
+`;
+
+export const FormDeleteButton = styled.button`
+  background: ${props => props.theme['yellow-500']};
+  width: 100%;
+
+  padding: 1rem 0;
+  margin-top: 1.5rem;
+
+  border-radius: 6px;
+  border: 1px solid ${props => props.theme['yellow-500']};
+  font-weight: bold;
+
+  transition: background 0.5s ease;
+
+  &:hover {
+    cursor: pointer;
+    background: ${props => props.theme['red-600']};
+    border: 1px solid ${props => props.theme['red-600']};
+  }
+`;

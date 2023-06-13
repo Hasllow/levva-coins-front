@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useStore } from 'effector-react';
 
 import TransactionStore from '../../stores/TransactionStore/TransactionStore';
-
 import GetTransactionsUseCase from '../../useCases/GetTransactionsUseCase/GetTransactionsUseCase';
 
 import { Header } from '../../components/Header';
@@ -15,6 +14,8 @@ import {
   TransactionsContainer,
   TransactionsTableEmpty,
 } from './styles';
+
+import { DeleteModal } from '../../components/Header/DeleteModal';
 
 export const Home = () => {
   const { isLoading, transactions } = useStore(TransactionStore);
@@ -45,6 +46,7 @@ export const Home = () => {
               <td>Preço</td>
               <td>Categoria</td>
               <td>Data</td>
+              <td>Excluir</td>
             </tr>
           </thead>
           <tbody>
@@ -59,6 +61,9 @@ export const Home = () => {
                   </td>
                   <td>{transaction.category.description}</td>
                   <td>{date.format(transaction.createdAt)}</td>
+                  <td>
+                    <DeleteModal id={transaction.id} />
+                  </td>
                 </tr>
               ))}
           </tbody>

@@ -20,7 +20,7 @@ const formSchema = yup
   })
   .required();
 
-export const Login = () => {
+export function Login() {
   const { isLoading, hasError, errorMessage } = useStore(LoginStore);
 
   const {
@@ -49,4 +49,4 @@ export const Login = () => {
       </Form>
     </AuthLayout>
   );
-};
+}

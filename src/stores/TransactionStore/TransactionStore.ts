@@ -4,6 +4,7 @@ import { TransactionState } from './TransactionState';
 
 import {
   loadCreateTransactionDone,
+  loadDeleteTransactionDone,
   loadTransaction,
   loadTransactionDone,
   loadTransactionFail,
@@ -28,6 +29,13 @@ const TransactionStore = createStore<TransactionState>(initialState)
     isLoading: false,
     transactions: [data, ...state.transactions],
     hasError: false,
+    errorMessage: '',
+  }))
+  .on(loadDeleteTransactionDone, (state, id) => ({
+    ...state,
+    isLoading: false,
+    hasError: false,
+    transactions: state.transactions.filter(transaction => transaction.id !== id),
     errorMessage: '',
   }))
   .on(loadTransactionDone, (_, data) => ({

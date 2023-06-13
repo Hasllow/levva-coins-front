@@ -29,4 +29,8 @@ export const CloseButton = styled(Dialog.Close)`
   right: 1.5rem;
   line-height: 0;
   color: ${props => props.theme['gray-400']};
+
+  &:focus {
+    box-shadow: none;
+  }
 `;
