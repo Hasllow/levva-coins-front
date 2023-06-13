@@ -15,7 +15,7 @@ import {
   TransactionsTableEmpty,
 } from './styles';
 
-import { DeleteModal } from '../../components/Header/DeleteModal';
+import { DeleteModal } from './DeleteModal';
 
 export const Home = () => {
   const { isLoading, transactions } = useStore(TransactionStore);

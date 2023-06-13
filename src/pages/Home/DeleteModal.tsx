@@ -5,7 +5,7 @@ import { useStore } from 'effector-react';
 import TransactionStore from '../../stores/TransactionStore/TransactionStore';
 import DeleteTransactionUseCase from '../../useCases/DeleteTransactionUseCase/DeleteTransactionUseCase';
 
-import { Modal } from '../Modal';
+import { Modal } from '../../components/Modal';
 import {
   FormButton,
   DeleteTransactionButton,
