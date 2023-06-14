@@ -6,7 +6,7 @@ export const SearchFormContainer = styled.form`
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
-  gap: 1 rem;
+  gap: 1rem;
 
   input {
     flex: 1;
@@ -45,4 +45,14 @@ export const SearchFormContainer = styled.form`
       color: ${props => props.theme['gray-600']};
     }
   }
+`;
+
+export const SearchWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  gap: 1rem;
 `;

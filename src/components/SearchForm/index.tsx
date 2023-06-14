@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { useStore } from 'effector-react';
 
 import { MagnifyingGlass } from 'phosphor-react';
-import { SearchFormContainer } from './styles';
+import { SearchFormContainer, SearchWrapper } from './styles';
 import TransactionStore from '../../stores/TransactionStore/TransactionStore';
 import { FormError, FormInput } from '../../styles/global';
 import SearchTransactionsUseCase from '../../useCases/SearchTransactionUseCase/SearchTransactionUseCase';
@@ -35,22 +35,24 @@ export const SearchForm = () => {
   };
 
   return (
-    <SearchFormContainer onSubmit={handleSubmit(handleSearchTransaction)}>
-      <FormInput {...register('search')} placeholder="Busque por transações" />
+    <SearchWrapper>
+      <SearchFormContainer onSubmit={handleSubmit(handleSearchTransaction)}>
+        <FormInput {...register('search')} placeholder="Busque por transações" />
+
+        {hasError && <FormError>{errorMessage}</FormError>}
+
+        <button type="submit">
+          {isLoading ? (
+            'Carregando...'
+          ) : (
+            <>
+              <MagnifyingGlass size={20} />
+              Buscar
+            </>
+          )}
+        </button>
+      </SearchFormContainer>
       {errors.search && <FormError>{errors.search.message}</FormError>}
-
-      {hasError && <FormError>{errorMessage}</FormError>}
-
-      <button type="submit">
-        {isLoading ? (
-          'Carregando...'
-        ) : (
-          <>
-            <MagnifyingGlass size={20} />
-            Buscar
-          </>
-        )}
-      </button>
-    </SearchFormContainer>
+    </SearchWrapper>
   );
 };
