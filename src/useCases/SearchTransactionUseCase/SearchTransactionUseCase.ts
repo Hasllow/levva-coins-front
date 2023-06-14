@@ -2,9 +2,9 @@ import { RequestError } from '../../domain/Request';
 import { TransactionValues } from '../../domain/Transaction';
 import TransactionService from '../../services/TransactionService/TransactionService';
 import {
-  loadTransaction,
-  loadTransactionDone,
-  loadTransactionFail,
+  loadSearchTransaction,
+  loadSearchTransactionDone,
+  loadSearchTransactionFail,
 } from '../../stores/TransactionStore/TransactionEvents';
 
 interface SearchParam {
@@ -12,14 +12,14 @@ interface SearchParam {
 }
 
 const execute = async ({ search }: SearchParam): Promise<void> => {
-  loadTransaction();
+  loadSearchTransaction();
 
   return TransactionService.searchTransaction(search)
     .then((transactions: TransactionValues[]) => {
-      loadTransactionDone(transactions);
+      loadSearchTransactionDone(transactions);
     })
     .catch(({ hasError, message }: RequestError) => {
-      loadTransactionFail({ hasError, message });
+      loadSearchTransactionFail({ hasError, message });
       throw new Error();
     });
 };

@@ -20,7 +20,7 @@ const formSchema = yup
   .required();
 
 export const SearchForm = () => {
-  const { isLoading, hasError, errorMessage } = useStore(TransactionStore);
+  const { isSearchLoading, hasSearchError, errorSearchMessage } = useStore(TransactionStore);
   const {
     register,
     handleSubmit,
@@ -39,10 +39,10 @@ export const SearchForm = () => {
       <SearchFormContainer onSubmit={handleSubmit(handleSearchTransaction)}>
         <FormInput {...register('search')} placeholder="Busque por transações" />
 
-        {hasError && <FormError>{errorMessage}</FormError>}
+        {hasSearchError && <FormError>{errorSearchMessage}</FormError>}
 
         <button type="submit">
-          {isLoading ? (
+          {isSearchLoading ? (
             'Carregando...'
           ) : (
             <>

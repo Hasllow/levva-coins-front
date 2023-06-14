@@ -9,3 +9,7 @@ export const loadCreateTransactionDone = createEvent<TransactionValues>(
 export const loadDeleteTransactionDone = createEvent<string>('loadDeleteTransactionDone');
 export const loadTransactionDone = createEvent<TransactionValues[]>('loadTransactionDone');
 export const loadTransactionFail = createEvent<RequestError>('loadTransactionFail');
+
+export const loadSearchTransaction = createEvent('loadTransaction');
+export const loadSearchTransactionDone = createEvent<TransactionValues[]>('loadTransactionDone');
+export const loadSearchTransactionFail = createEvent<RequestError>('loadTransactionFail');

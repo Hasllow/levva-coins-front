@@ -5,6 +5,9 @@ import { TransactionState } from './TransactionState';
 import {
   loadCreateTransactionDone,
   loadDeleteTransactionDone,
+  loadSearchTransaction,
+  loadSearchTransactionDone,
+  loadSearchTransactionFail,
   loadTransaction,
   loadTransactionDone,
   loadTransactionFail,
@@ -12,9 +15,12 @@ import {
 
 const initialState: TransactionState = {
   isLoading: false,
+  isSearchLoading: false,
   transactions: [],
   hasError: false,
   errorMessage: '',
+  hasSearchError: false,
+  errorSearchMessage: '',
 };
 
 const TransactionStore = createStore<TransactionState>(initialState)
@@ -38,7 +44,8 @@ const TransactionStore = createStore<TransactionState>(initialState)
     transactions: state.transactions.filter(transaction => transaction.id !== id),
     errorMessage: '',
   }))
-  .on(loadTransactionDone, (_, data) => ({
+  .on(loadTransactionDone, (state, data) => ({
+    ...state,
     isLoading: false,
     transactions: data,
     hasError: false,
@@ -49,6 +56,25 @@ const TransactionStore = createStore<TransactionState>(initialState)
     isLoading: false,
     hasError: data.hasError,
     errorMessage: data.message,
+  }))
+  .on(loadSearchTransaction, state => ({
+    ...state,
+    isSearchLoading: true,
+    hasSearchError: false,
+    errorSearchMessage: '',
+  }))
+  .on(loadSearchTransactionDone, (state, data) => ({
+    ...state,
+    isSearchLoading: false,
+    transactions: data,
+    hasSearchError: false,
+    errorSearchMessage: '',
+  }))
+  .on(loadSearchTransactionFail, (state, data) => ({
+    ...state,
+    isSearchLoading: false,
+    hasSearchError: data.hasError,
+    errorSearchMessage: data.message,
   }));
 
 export default TransactionStore;
